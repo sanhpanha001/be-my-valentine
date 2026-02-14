@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+  font-family: "Poppins", sans-serif;
+  color: #4a4a4a;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.container {
+  background: white;
+  padding: 4rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 40rem;
+  width: 100%;
+}
+
+.img {
+  width: auto;
+  height: 26rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.img:hover {
+  transform: scale(1.05);
+}
+
+.title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #ff4081;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 1.8rem 3.2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-yes {
+  background-color: #27ae60;
+  color: white;
+  transition: transform 0.2s ease-in-out, background-color 0.3s;
+}
+
+.btn-yes:hover {
+  background-color: #2ecc71;
+  transform: scale(1.1);
+}
+
+.btn-no {
+  background-color: #e74c3c;
+  color: white;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-no:hover {
+  background-color: #ff6b6b;
+  transform: scale(0.9);
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .buttons {
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    align-items: center;
+    display: flex;
+  }
+
+  .btn {
+    width: 80%;
+    font-size: 1.6rem;
+    padding: 1.6rem 2.4rem;
+    max-width: 280px; /* Slightly smaller for mobile */
+  }
+
+  .btn-yes {
+    transform: scale(1) !important; /* Prevent initial excessive growth */
+    max-width: 250px; /* Ensure a reasonable max size */
+  }
+
+  .btn-no {
+    transform: scale(1);
+    max-width: 250px;
+  }
+}
+
+/* Ensure the Yes button grows only to a reasonable size */
+.btn-yes {
+  transition: transform 0.3s ease-in-out, background-color 0.3s;
+  max-width: 300px;
+}
+
+.btn-yes:hover {
+  background-color: #2ecc71;
+  transform: scale(1.1);
+}
