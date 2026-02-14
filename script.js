@@ -56,7 +56,7 @@ function generateMessage(noCount) {
   const messages = [
     "No 😔",
     "Are you sure? 🥺",
-    "Pookie please 🥹",
+    "Nan please 🥹",
     "Don't do this to me 😭",
     "You're breaking my heart 💔",
     "I'm gonna cry... 😭💔",
@@ -67,7 +67,7 @@ function generateMessage(noCount) {
 function changeImage(image) {
   img.src =
     image === "yes"
-      ? "https://media.tenor.com/ACi1vdjNbpIAAAAi/%EC%9C%A0%ED%83%80-%ED%86%A4%ED%86%A4%ED%94%84%EB%A0%8C%EC%A6%88.gif"
+      ? "https://media.tenor.com/cJhzOTWcYCoAAAAj/%E5%BF%AB%E4%B9%90-%E8%B7%B3%E8%88%9E.gif"
       : tontonGifs[image];
 }
 
