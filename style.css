@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
@@ -20,8 +21,10 @@ body {
   align-items: center;
   height: 100vh;
   padding: 2rem;
+  overflow: hidden;
 }
 
+/* ================= CONTAINER ================= */
 .container {
   background: white;
   padding: 4rem;
@@ -33,8 +36,10 @@ body {
   justify-content: center;
   max-width: 40rem;
   width: 100%;
+  z-index: 2;
 }
 
+/* ================= IMAGE ================= */
 .img {
   width: auto;
   height: 26rem;
@@ -47,6 +52,7 @@ body {
   transform: scale(1.05);
 }
 
+/* ================= TITLE ================= */
 .title {
   font-size: 2rem;
   font-weight: 700;
@@ -55,11 +61,13 @@ body {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* ================= BUTTONS ================= */
 .buttons {
   display: flex;
   gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
+  transition: opacity 0.4s ease;
 }
 
 .btn {
@@ -77,10 +85,12 @@ body {
   transform: translateY(-3px);
 }
 
+/* YES BUTTON */
 .btn-yes {
   background-color: #27ae60;
   color: white;
-  transition: transform 0.2s ease-in-out, background-color 0.3s;
+  transition: transform 0.3s ease-in-out, background-color 0.3s;
+  max-width: 300px;
 }
 
 .btn-yes:hover {
@@ -88,6 +98,7 @@ body {
   transform: scale(1.1);
 }
 
+/* NO BUTTON */
 .btn-no {
   background-color: #e74c3c;
   color: white;
@@ -99,44 +110,82 @@ body {
   transform: scale(0.9);
 }
 
-.hidden {
-  display: none;
-}
-
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
   .buttons {
     flex-direction: column;
     gap: 1.2rem;
     width: 100%;
     align-items: center;
-    display: flex;
   }
 
   .btn {
     width: 80%;
     font-size: 1.6rem;
     padding: 1.6rem 2.4rem;
-    max-width: 280px; /* Slightly smaller for mobile */
+    max-width: 280px;
   }
 
-  .btn-yes {
-    transform: scale(1) !important; /* Prevent initial excessive growth */
-    max-width: 250px; /* Ensure a reasonable max size */
-  }
-
+  .btn-yes,
   .btn-no {
-    transform: scale(1);
     max-width: 250px;
+    transform: scale(1) !important;
+  }
+
+  /* Hide buttons after YES (mobile only) */
+  .hide-mobile {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
-/* Ensure the Yes button grows only to a reasonable size */
-.btn-yes {
-  transition: transform 0.3s ease-in-out, background-color 0.3s;
-  max-width: 300px;
+/* ================= HEARTS ================= */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 2.4rem;
+  animation: floatUp 4s linear forwards;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.btn-yes:hover {
-  background-color: #2ecc71;
-  transform: scale(1.1);
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+/* ================= CONFETTI ================= */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  animation: fall 3s linear forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.confetti:nth-child(odd) {
+  background: #ff4081;
+}
+
+.confetti:nth-child(even) {
+  background: #27ae60;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
 }

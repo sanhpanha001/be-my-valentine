@@ -21,12 +21,21 @@ let noCount = 0;
 let noButtonSize = 1;
 let yesButtonSize = 1;
 
+/* ✅ YES BUTTON */
 yesBtn.addEventListener("click", () => {
   title.innerHTML = "Yay! I Love You!! 💗";
-  btnContainer.classList.add("hidden");
   changeImage("yes");
+
+  createConfetti();
+  startHearts();
+
+  // Hide buttons ONLY on mobile
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    btnContainer.classList.add("hide-mobile");
+  }
 });
 
+/* ❌ NO BUTTON */
 noBtn.addEventListener("click", () => {
   if (play) {
     noCount++;
@@ -35,20 +44,20 @@ noBtn.addEventListener("click", () => {
     resizeYesButton();
     shrinkNoButton();
     updateNoButtonText();
+
     if (noCount === MAX_IMAGES) play = false;
   }
 });
 
 function resizeYesButton() {
-  if (yesButtonSize < 2) { // Prevent the button from growing too large
+  if (yesButtonSize < 2) {
     yesButtonSize *= 1.2;
     yesBtn.style.transform = `scale(${yesButtonSize})`;
   }
 }
 
-
 function shrinkNoButton() {
-  noButtonSize *= 0.90;
+  noButtonSize *= 0.9;
   noBtn.style.transform = `scale(${noButtonSize})`;
 }
 
@@ -64,6 +73,10 @@ function generateMessage(noCount) {
   return messages[Math.min(noCount, messages.length - 1)];
 }
 
+function updateNoButtonText() {
+  noBtn.innerHTML = generateMessage(noCount);
+}
+
 function changeImage(image) {
   img.src =
     image === "yes"
@@ -71,6 +84,28 @@ function changeImage(image) {
       : tontonGifs[image];
 }
 
-function updateNoButtonText() {
-  noBtn.innerHTML = generateMessage(noCount);
+/* 💖 HEARTS */
+function startHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 4000);
+  }, 400);
+}
+
+/* 🎉 CONFETTI */
+function createConfetti() {
+  for (let i = 0; i < 80; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDelay = Math.random() * 1.5 + "s";
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 3000);
+  }
 }
